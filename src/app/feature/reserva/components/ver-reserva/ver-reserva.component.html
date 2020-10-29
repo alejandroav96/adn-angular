@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Reserva {{data.id}}</h1>
+<div mat-dialog-content>
+  <p>id de usuario: {{data.usuarioId}}</p>
+  <p>id de cancha: {{data.canchaId}}</p>
+  <p>Valor: {{data.valor | currency}}</p>
+  <p>Fecha de reserva: {{data.fecha | date:"dd/MM/yy - h:mm a"}}</p>
+  <p>Fecha de creación: {{data.fechaCreacion | date:"dd/MM/yy - h:mm a"}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Cerrar</button>
+  <button mat-button [mat-dialog-close]="data.id">Eliminar</button>
+</div>

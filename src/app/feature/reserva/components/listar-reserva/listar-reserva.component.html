@@ -1,0 +1,32 @@
+<button mat-raised-button (click)="retroceder()">Retroceder</button>
+{{fechaInicio | date:"dd/MM/yy - h:mm a"}} - {{fechaFin | date:"dd/MM/yy - h:mm a"}}
+<button mat-raised-button (click)="avanzar()">Avanzar</button>
+Cancha : <mat-form-field>
+    <mat-select (valueChange)="cambioCancha($event)">
+        <mat-option value="">--</mat-option>
+        <mat-option *ngFor="let cancha of canchas" [value]="cancha.id">
+            {{ cancha.nombre }}
+          </mat-option>
+    </mat-select>
+</mat-form-field>
+<button mat-raised-button (click)="crear()">Crear reserva</button>
+<ng-container *ngIf="tieneCancha">
+    <mat-grid-list cols="6" rowHeight="100px">
+        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+            [style.background]="tile.color">
+            {{tile.text}}
+        </mat-grid-tile>
+    </mat-grid-list>
+    <ng-container *ngFor="let dat of data">
+        <mat-grid-list cols="6" rowHeight="5:1">
+            <mat-grid-tile colspan="1" rowspan="1">
+                {{dat.hour}}
+            </mat-grid-tile>
+            <mat-grid-tile *ngFor="let item of dat.data" colspan="1" rowspan="1"
+                [ngStyle]="{'background': item.reserva !=null ? 'lightblue' : 'lightgreen'}"
+                (click)="abrir(item.id)">
+                {{item.reserva !=null ? 'Reservado' : 'Disponible'}}
+            </mat-grid-tile>
+        </mat-grid-list>
+    </ng-container>
+</ng-container>

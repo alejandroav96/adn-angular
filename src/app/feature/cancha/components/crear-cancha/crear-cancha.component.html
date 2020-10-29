@@ -1,0 +1,27 @@
+<form [formGroup]="canchaForm">
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Nombre:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" placeholder="Cancha 1" formControlName="nombre">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Valor:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="number" placeholder="1000" formControlName="valor">
+        </div>
+    </div>
+
+    <div>
+        <button mat-raised-button [disabled]="!canchaForm.valid" (click)="crear()">Crear</button>
+    </div>
+
+    <div *ngIf="errorBackend">
+        <p>{{mensaje}}</p>
+    </div>
+</form>

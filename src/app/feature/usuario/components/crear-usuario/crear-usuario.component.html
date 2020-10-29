@@ -1,0 +1,18 @@
+<form [formGroup]="usuarioForm">
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Nombre:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" placeholder="Pepito Perez" formControlName="nombre" id="nombre">
+        </div>
+    </div>
+
+    <div>
+        <button mat-raised-button [disabled]="!usuarioForm.valid" (click)="crear()">Crear</button>
+    </div>
+
+    <div *ngIf="errorBackend">
+        <p>{{mensaje}}</p>
+    </div>
+</form>
